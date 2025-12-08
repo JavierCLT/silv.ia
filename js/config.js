@@ -4,7 +4,7 @@
 const CONFIG = {
     // URL del backend (Cloudflare Worker)
     // Cambia esto a tu URL de Cloudflare Worker cuando lo despliegues
-    API_URL: 'https://silvia-mapfre.YOUR-SUBDOMAIN.workers.dev/chat',
+    API_URL: 'https://silvia.javierss-usa.workers.dev/chat',
 
     // Para desarrollo local, puedes usar:
     // API_URL: 'http://localhost:8787/chat',
