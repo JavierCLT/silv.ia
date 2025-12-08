@@ -1,0 +1,16 @@
+# Configuración de Cloudflare Worker para SILVIA
+# Más info: https://developers.cloudflare.com/workers/wrangler/configuration/
+
+name = "silvia-mapfre"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+# Variables de entorno (secretos)
+# NO pongas tu API key aquí - usa: wrangler secret put ANTHROPIC_API_KEY
+# [vars]
+# ANTHROPIC_API_KEY = "" # Configurar como secreto
+
+# Configuración de rutas (opcional, si usas dominio propio)
+# [[routes]]
+# pattern = "api.tudominio.com/chat"
+# zone_name = "tudominio.com"
