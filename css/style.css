@@ -20,10 +20,16 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
-    min-height: 100vh;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,16 +61,16 @@ body {
 }
 
 .chat-header-logo {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     background: var(--mapfre-white);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
+    font-weight: 800;
     color: var(--mapfre-red);
-    font-size: 12px;
+    font-size: 24px;
     flex-shrink: 0;
 }
 
@@ -465,26 +471,71 @@ body {
     .chat-container {
         max-width: 100%;
         height: 100vh;
+        height: 100dvh;
         max-height: none;
         border-radius: 0;
     }
 
     .chat-header {
-        padding: 15px;
+        padding: 12px 15px;
     }
 
     .chat-header-logo {
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .chat-header-info h1 {
+        font-size: 1.1rem;
+    }
+
+    .chat-header-info p {
+        font-size: 0.75rem;
+    }
+
+    .insurance-selector {
+        padding: 10px 15px;
+    }
+
+    .insurance-selector p {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
     }
 
     .insurance-buttons {
         gap: 6px;
+        flex-wrap: nowrap;
+        justify-content: space-between;
     }
 
     .insurance-btn {
-        padding: 6px 12px;
-        font-size: 0.8rem;
+        padding: 6px 10px;
+        font-size: 0.75rem;
+        flex: 1;
+        text-align: center;
+    }
+
+    .insurance-btn .icon {
+        margin-right: 3px;
+    }
+
+    .chat-messages {
+        padding: 15px;
+    }
+
+    .chat-input-area {
+        padding: 10px 15px;
+    }
+
+    .chat-input {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .send-btn {
+        width: 42px;
+        height: 42px;
     }
 }
 

@@ -12,7 +12,7 @@ class SilviaChat {
         this.successMessage = document.getElementById('successMessage');
         this.insuranceButtons = document.querySelectorAll('.insurance-btn');
 
-        this.currentInsuranceType = 'general';
+        this.currentInsuranceType = 'auto';
         this.conversationHistory = [];
         this.leads = [];
         this.isTyping = false;
