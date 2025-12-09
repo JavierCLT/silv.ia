@@ -500,8 +500,8 @@ Selecciona el tipo de seguro arriba para ver las coberturas detalladas.`
         // Guardar en localStorage
         this.saveLeads();
 
-        // Enviar a WhatsApp del agente
-        this.sendToWhatsApp(lead);
+        // Enviar lead por email
+        this.sendLeadByEmail(lead);
 
         // Mostrar mensaje de éxito
         this.leadForm.style.display = 'none';
@@ -519,26 +519,38 @@ Mientras tanto, ¿hay algo más en lo que pueda ayudarte?`, 'bot');
         this.leadForm.reset();
     }
 
-    sendToWhatsApp(lead) {
-        // Número de WhatsApp del agente (sin + ni espacios)
-        const agentWhatsApp = CONFIG.AGENT_WHATSAPP || '34600000000';
+    sendLeadByEmail(lead) {
+        // Verificar si EmailJS está configurado
+        if (!CONFIG.EMAILJS || !CONFIG.EMAILJS.enabled) {
+            console.log('EmailJS no configurado, lead guardado solo en localStorage');
+            return;
+        }
 
-        // Crear mensaje con los datos del lead
-        const message = `🔔 *NUEVO LEAD SILVIA*
+        // Inicializar EmailJS
+        emailjs.init(CONFIG.EMAILJS.publicKey);
 
-👤 *Nombre:* ${lead.name}
-📱 *Teléfono:* ${lead.phone}
-🛡️ *Interesado en:* ${lead.insurance}
-📅 *Fecha:* ${new Date().toLocaleString('es-ES')}
+        // Preparar datos para el email
+        const templateParams = {
+            lead_name: lead.name,
+            lead_phone: lead.phone,
+            lead_insurance: lead.insurance,
+            lead_date: new Date().toLocaleString('es-ES'),
+            conversation_summary: this.getConversationSummary()
+        };
 
-💬 *Resumen conversación:*
-${this.getConversationSummary()}`;
-
-        // Crear URL de WhatsApp
-        const whatsappUrl = `https://wa.me/${agentWhatsApp}?text=${encodeURIComponent(message)}`;
-
-        // Abrir en nueva pestaña
-        window.open(whatsappUrl, '_blank');
+        // Enviar email
+        emailjs.send(
+            CONFIG.EMAILJS.serviceId,
+            CONFIG.EMAILJS.templateId,
+            templateParams
+        ).then(
+            (response) => {
+                console.log('Lead enviado por email correctamente', response);
+            },
+            (error) => {
+                console.error('Error al enviar lead por email:', error);
+            }
+        );
     }
 
     getConversationSummary() {

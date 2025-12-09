@@ -23,6 +23,15 @@ const CONFIG = {
     // Ejemplo España: 34612345678
     AGENT_WHATSAPP: '34600000000', // ⚠️ CAMBIA ESTO POR TU NÚMERO REAL
 
+    // Configuración de EmailJS para recibir leads por email
+    // Regístrate gratis en https://www.emailjs.com/
+    EMAILJS: {
+        enabled: true,
+        publicKey: 'TU_PUBLIC_KEY',      // ⚠️ CAMBIA ESTO
+        serviceId: 'TU_SERVICE_ID',       // ⚠️ CAMBIA ESTO
+        templateId: 'TU_TEMPLATE_ID'      // ⚠️ CAMBIA ESTO
+    },
+
     // Mensaje de bienvenida
     WELCOME_MESSAGE: `¡Hola! Soy SILVIA, tu asistente virtual de seguros MAPFRE. 👋
 
