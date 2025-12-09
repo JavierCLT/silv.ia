@@ -19,6 +19,10 @@ const CONFIG = {
         whatsapp: true
     },
 
+    // Tu número de WhatsApp para recibir leads (formato: código país + número, sin + ni espacios)
+    // Ejemplo España: 34612345678
+    AGENT_WHATSAPP: '34600000000', // ⚠️ CAMBIA ESTO POR TU NÚMERO REAL
+
     // Mensaje de bienvenida
     WELCOME_MESSAGE: `¡Hola! Soy SILVIA, tu asistente virtual de seguros MAPFRE. 👋
 

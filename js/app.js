@@ -500,6 +500,9 @@ Selecciona el tipo de seguro arriba para ver las coberturas detalladas.`
         // Guardar en localStorage
         this.saveLeads();
 
+        // Enviar a WhatsApp del agente
+        this.sendToWhatsApp(lead);
+
         // Mostrar mensaje de éxito
         this.leadForm.style.display = 'none';
         this.successMessage.style.display = 'flex';
@@ -514,6 +517,38 @@ Mientras tanto, ¿hay algo más en lo que pueda ayudarte?`, 'bot');
 
         // Limpiar formulario
         this.leadForm.reset();
+    }
+
+    sendToWhatsApp(lead) {
+        // Número de WhatsApp del agente (sin + ni espacios)
+        const agentWhatsApp = CONFIG.AGENT_WHATSAPP || '34600000000';
+
+        // Crear mensaje con los datos del lead
+        const message = `🔔 *NUEVO LEAD SILVIA*
+
+👤 *Nombre:* ${lead.name}
+📱 *Teléfono:* ${lead.phone}
+🛡️ *Interesado en:* ${lead.insurance}
+📅 *Fecha:* ${new Date().toLocaleString('es-ES')}
+
+💬 *Resumen conversación:*
+${this.getConversationSummary()}`;
+
+        // Crear URL de WhatsApp
+        const whatsappUrl = `https://wa.me/${agentWhatsApp}?text=${encodeURIComponent(message)}`;
+
+        // Abrir en nueva pestaña
+        window.open(whatsappUrl, '_blank');
+    }
+
+    getConversationSummary() {
+        // Obtener últimos mensajes relevantes
+        const lastMessages = this.conversationHistory.slice(-6);
+        if (lastMessages.length === 0) return 'Sin conversación previa';
+
+        return lastMessages
+            .map(msg => `${msg.role === 'user' ? '👤' : '🤖'} ${msg.content.substring(0, 100)}...`)
+            .join('\n');
     }
 
     saveLeads() {
