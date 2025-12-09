@@ -100,7 +100,9 @@ class SilviaChat {
         messageDiv.appendChild(contentDiv);
 
         this.chatMessages.appendChild(messageDiv);
-        this.scrollToBottom();
+
+        // Scroll al inicio del nuevo mensaje (no al final)
+        messageDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     formatMessage(content) {
