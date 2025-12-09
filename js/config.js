@@ -27,9 +27,9 @@ const CONFIG = {
     // Regístrate gratis en https://www.emailjs.com/
     EMAILJS: {
         enabled: true,
-        publicKey: 'TU_PUBLIC_KEY',      // ⚠️ CAMBIA ESTO
-        serviceId: 'TU_SERVICE_ID',       // ⚠️ CAMBIA ESTO
-        templateId: 'TU_TEMPLATE_ID'      // ⚠️ CAMBIA ESTO
+        publicKey: 'aPM253J2gtwriXX4u',      // ⚠️ CAMBIA ESTO
+        serviceId: 'service_aq7xu7d',       // ⚠️ CAMBIA ESTO
+        templateId: 'template_4axoh1i'      // ⚠️ CAMBIA ESTO
     },
 
     // Mensaje de bienvenida
