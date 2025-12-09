@@ -351,6 +351,38 @@ body {
     border-color: var(--mapfre-red);
 }
 
+/* Checkbox de consentimiento LOPD */
+.consent-group {
+    margin-top: 15px;
+}
+
+.consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: var(--mapfre-gray);
+    line-height: 1.4;
+}
+
+.consent-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--mapfre-red);
+}
+
+.consent-label a {
+    color: var(--mapfre-red);
+    text-decoration: underline;
+}
+
+.consent-label a:hover {
+    color: var(--mapfre-red-dark);
+}
+
 .modal-buttons {
     display: flex;
     gap: 10px;
